@@ -1,0 +1,13 @@
+# backup files
+*~
+.#*
+*#
+
+# local non-app configs
+.dir-locals.el
+TAGS
+.env
+
+# handy when you wanna move stuff
+# just rename to *.backup
+*.backup
