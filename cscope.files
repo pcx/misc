@@ -1,0 +1,3 @@
+./include/stack.h
+./src/stack.c
+./src/stack_example.c
