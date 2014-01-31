@@ -1,13 +1,17 @@
-# backup files
+build/
+bin/
+
+# emacs backup files
 *~
 .#*
 *#
 
-# local non-app configs
+# local configs
 .dir-locals.el
 TAGS
 .env
+cscope.out
 
 # handy when you wanna move stuff
-# just rename to *.backup
-*.backup
+# just rename to *.bak
+*.bak
