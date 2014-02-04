@@ -1,21 +1,15 @@
 #ifndef _STACK_H
 #define _STACK_H
 
-typedef struct element {
-     char val;
-     struct element *next, *prev;
-} element;
+#include "linked_list.h"
 
-typedef struct Stack{
-     element *_head;
-     char (*head)(struct Stack *st);
-     void (*push)(struct Stack *st, char c);
-     char (*pop)(struct Stack *st);
-} Stack;
+typedef struct LinkedStack {
+     linked_element *_head;
+     int (*head)(linked_element *el);
+     void (*push)(linked_element **el, int i);
+     int (*pop)(linked_element **el);
+} LinkedStack;
 
-Stack *Stack_create();
-char Stack_head(Stack *st);
-void Stack_push(Stack *st, char c);
-char Stack_pop(Stack *st);
+LinkedStack *Stack_create();
 
 #endif

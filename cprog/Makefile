@@ -15,7 +15,7 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	mkdir -p $(BUILDDIR)
 	$(CC) $(CCFLAGS) $(INC) -c -o $@ $<
 
-$(BINDIR)/stack_example: $(BUILDDIR)/stack.o $(BUILDDIR)/stack_example.o
+$(BINDIR)/stack_example: $(BUILDDIR)/stack.o $(BUILDDIR)/stack_example.o $(BUILDDIR)/linked_list.o
 	mkdir -p $(BINDIR)
 	$(CC) $(CCFLAGS) $^ -o $@
 
