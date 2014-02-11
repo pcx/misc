@@ -22,6 +22,7 @@ LinkedStack *Stack_create()
      st->head = head;
      st->push = push;
      st->pop = pop;
+     st->size = size;
 
      return st;
 

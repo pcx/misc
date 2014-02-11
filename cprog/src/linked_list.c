@@ -17,6 +17,24 @@ error:
      return -1;
 }
 
+int size(linked_element *el)
+{
+     if(!el) {
+	  return 0;
+     } else {
+	  int i = 1;
+	  while(1) {
+	       if(el->next) {
+		    i++;
+		    el = el->next;
+	       } else {
+		    break;
+	       }
+	  }
+	  return i;
+     }
+}
+
 int push(linked_element **el, int i)
 {
      check(el, "Invalid pointer to *linked_element.");
