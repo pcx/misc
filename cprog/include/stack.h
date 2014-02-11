@@ -6,7 +6,7 @@
 typedef struct LinkedStack {
      linked_element *_head;
      int (*head)(linked_element *el);
-     void (*push)(linked_element **el, int i);
+     int (*push)(linked_element **el, int i);
      int (*pop)(linked_element **el);
 } LinkedStack;
 
