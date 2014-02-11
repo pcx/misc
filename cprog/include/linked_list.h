@@ -11,7 +11,7 @@ typedef struct linked_element {
 } linked_element;
 
 int head(linked_element *el);
-void push(linked_element **el, int i);
+int push(linked_element **el, int i);
 int pop(linked_element **el);
 
 #endif
