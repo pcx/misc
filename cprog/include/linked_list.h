@@ -14,5 +14,6 @@ int head(linked_element *el);
 int push(linked_element **el, int i);
 int pop(linked_element **el);
 int size(linked_element *el);
+linked_element *get_tail(linked_element *el);
 
 #endif

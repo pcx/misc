@@ -66,6 +66,20 @@ error:
      return -1;
 }
 
+linked_element *get_tail(linked_element *el)
+{
+/*
+  Traverse a linked list and return reference to list's tail.
+ */
+     while(1) {
+	  if(el && el->next) {
+	       el = el->next;
+	  } else {
+	       return el;
+	  }
+     }
+}
+
 int pop(linked_element **el)
 {
      check(el, "Invalid pointer to *linked_element.");
