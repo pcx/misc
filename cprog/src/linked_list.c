@@ -80,6 +80,36 @@ linked_element *get_tail(linked_element *el)
      }
 }
 
+int inject(linked_element **el, int i)
+{
+     check(el, "Invalid pointer to *linked_element.");
+
+     linked_element *_el = *el;
+     check(_el, "Empty pointer to linked_element.");
+
+     linked_element *tail_element = get_tail(_el);
+     if(tail_element && !tail_element->set) {
+	  tail_element->val = i;
+	  tail_element->set = true;
+	  return 0;
+     } else {
+	  linked_element *el_new = malloc(sizeof linked_element);
+	  check_mem(el_new);
+	  el_new->next = NULL;
+	  el_new->val = i;
+	  el_new->set = true;
+
+	  if(!tail_element) {
+	       el_new->prev = NULL;
+	       tail_element = el_new;
+	  } else {
+	       el_new->prev = tail_element;
+	       tail_element->next = el_new;
+	  }
+	  return 0;
+     }
+}
+
 int pop(linked_element **el)
 {
      check(el, "Invalid pointer to *linked_element.");
