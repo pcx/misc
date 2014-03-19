@@ -16,6 +16,7 @@
 int *max_subarray_bf(int *arr, int len)
 {
      check(arr, "max_subarray_bf() was passed a NULL pointer. Nothing to do.");
+     check(len > 0, "max_subarray_bf() was passed a invalid len.");
      
      int left_max = 0, right_max = 0, max_sum = 0;
      int *max = malloc(2 * (sizeof (int)));
