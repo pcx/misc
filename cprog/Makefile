@@ -19,5 +19,9 @@ $(BINDIR)/stack_example: $(BUILDDIR)/stack.o $(BUILDDIR)/stack_example.o $(BUILD
 	mkdir -p $(BINDIR)
 	$(CC) $(CCFLAGS) $^ -o $@
 
+$(BINDIR)/max_subarray: $(BUILDDIR)/max_subarray.o
+	mkdir -p $(BINDIR)
+	$(CC) $(CCFLAGS) $^ -o $@
+
 clean:
 	$(RM) -r $(BUILDDIR) $(BINDIR)
