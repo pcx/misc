@@ -26,7 +26,7 @@ SubArray *max_subarray_bf(int *arr, int len)
 	  sum = 0;
 	  for(j = i; j < len; j++) {
 	       sum = sum + arr[j];
-	       if(sum > sub_array->sum) {
+	       if((i == 0 && j == 0) || (sum > sub_array->sum)) {
 		    sub_array->sum = sum;
 		    sub_array->start = i;
 		    sub_array->end = j;
@@ -68,14 +68,14 @@ SubArray *max_crossing_subarray(int *arr, int start, int mid, int end)
      int i = 0, sum = 0, left_sum = 0, right_sum = 0;
      for(i = mid; i >= start; i--) {
 	  sum = sum + arr[i];
-	  if(sum > left_sum) {
+	  if((i ==  mid) || (sum > left_sum)) {
 	       left_sum = sum;
 	       sub_array->start = i;
 	  }
      }
      for(i = mid + 1; i <= end; i++) {
 	  sum = sum + arr[i];
-	  if(sum > right_sum) {
+	  if((i == mid + 1) || (sum > right_sum)) {
 	       right_sum = sum;
 	       sub_array->end = i;
 	  }
