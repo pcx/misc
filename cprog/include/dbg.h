@@ -10,7 +10,7 @@
 #define debug(M, ...)
 #else
 // prints a debug message along with filename and lineno to stderr
-#define debug(M, ...) fprintf(stderr, "DEBUG %s:%d: " M "\n", __FILE__, __LINE__, $$__VA_ARGS__)
+#define debug(M, ...) fprintf(stderr, "DEBUG %s:%d: " M "\n", __FILE__, __LINE__, ##__VA_ARGS__)
 #endif
 
 // returns a clean errno, i.e. return None when errno=0

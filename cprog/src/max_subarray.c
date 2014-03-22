@@ -65,21 +65,22 @@ SubArray *max_crossing_subarray(int *arr, int start, int mid, int end)
      sub_array->arr = arr;
      sub_array->sum = 0;
 
-     int i = 0, sum = 0;
+     int i = 0, sum = 0, left_sum = 0, right_sum = 0;
      for(i = mid; i >= start; i--) {
 	  sum = sum + arr[i];
-	  if(sum > sub_array->sum) {
-	       sub_array->sum = sum;
+	  if(sum > left_sum) {
+	       left_sum = sum;
 	       sub_array->start = i;
 	  }
      }
-     for(i = mid, sum = 0; i <= end; i++) {
+     for(i = mid + 1; i <= end; i++) {
 	  sum = sum + arr[i];
-	  if(sum > sub_array->sum) {
-	       sub_array->sum = sum;
+	  if(sum > right_sum) {
+	       right_sum = sum;
 	       sub_array->end = i;
 	  }
      }
+     sub_array->sum = left_sum + right_sum;
      return sub_array;
 error:
      return NULL;
@@ -101,9 +102,18 @@ SubArray *max_subarray_dq(int *arr, int start, int end)
      check(start >= 0 && end >= 0,
 	   "max_subarray_dq() was passed invalid indexes (%d, %d)",
 	   start, end);
-     int mid = start + ((end - start + 1)
-			/ 2);
 
+     if(start == end) {
+	  SubArray *sub_array = malloc(sizeof (SubArray));
+	  sub_array->arr = arr;
+	  sub_array->start = start;
+	  sub_array->end = end;
+	  sub_array->sum = arr[start];
+	  return sub_array;
+     }
+
+     int mid = start + ((end - start)
+			/ 2);
      SubArray *max_left = max_subarray_dq(arr, start, mid);
      SubArray *max_right = max_subarray_dq(arr, mid + 1, end);
      SubArray *max_crossing = max_crossing_subarray(arr, start, mid, end);
