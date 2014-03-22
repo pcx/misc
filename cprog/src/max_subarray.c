@@ -135,6 +135,41 @@ error:
      return NULL;
 }
 
+SubArray *max_subarray_linear(int *arr, int len)
+{
+     int max_tail_start = 0, max_tail_sum = 0;
+     int max_start = 0, max_end = 0, max_sum = 0;
+     int i = 0;
+
+     for(i = 0; i < len; i++) {
+	  if((i == 0) ||
+	     (arr[i] > max_tail_sum + arr[i])) {
+	       max_tail_start = i;
+	       max_tail_sum =  arr[i];
+	  } else {
+	       max_tail_sum = max_tail_sum + arr[i];
+	  }
+
+	  if((i == 0) ||
+	     (max_tail_sum > max_sum)) {
+	       max_sum = max_tail_sum;
+	       max_start = max_tail_start;
+	       max_end = i;
+	  }
+     }
+
+     SubArray *sub_array = malloc(sizeof (SubArray));
+     check_mem(sub_array);
+     sub_array->sum = max_sum;
+     sub_array->start = max_start;
+     sub_array->end = max_end;
+     sub_array->arr = arr;
+
+     return sub_array;
+error:
+     return NULL;
+}
+
 int main(int argc, char **argv)
 {
      int arr[8] = {1, 4, -1, -10, 20, -5, 7, -3};
@@ -149,6 +184,10 @@ int main(int argc, char **argv)
      log_info("Using Divide & Conquer, indices of the maximum subarray"
 	      " are: (%d, %d)", sub_array_dq->start, sub_array_dq->end);
 
+     SubArray *sub_array_linear = max_subarray_linear(arr, 8);
+     check(sub_array_linear, "max_subarray_linear returned NULL.");
+     log_info("Using a linear algorithm, indices of the maximum subarray"
+	      " are: (%d, %d)", sub_array_linear->start, sub_array_linear->end);
      return 0;
 error:
      return -1;
