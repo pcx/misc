@@ -1,6 +1,8 @@
 build/
 bin/
 
+.vagrant
+
 # emacs backup files
 *~
 .#*
