@@ -46,7 +46,7 @@ int push(linked_element **el, int i)
 	  _el->val = i;
 	  _el->set = true;
      } else {
-	  linked_element *el_new = malloc(sizeof(linked_element));
+	  linked_element *el_new = malloc(sizeof (linked_element));
 	  check_mem(el_new);
 
 	  // set properties of el_new
@@ -93,7 +93,7 @@ int inject(linked_element **el, int i)
 	  tail_element->set = true;
 	  return 0;
      } else {
-	  linked_element *el_new = malloc(sizeof linked_element);
+	  linked_element *el_new = malloc(sizeof (linked_element));
 	  check_mem(el_new);
 	  el_new->next = NULL;
 	  el_new->val = i;
@@ -108,6 +108,8 @@ int inject(linked_element **el, int i)
 	  }
 	  return 0;
      }
+error:
+     return 1;
 }
 
 int pop(linked_element **el)
